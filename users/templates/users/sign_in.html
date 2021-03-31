@@ -1,0 +1,85 @@
+{% extends 'users/base.html' %}
+{% load socialaccount %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block extend_nav %} 
+
+<ul class="sidenav">
+  <li><a class="active" href="{% url 'users:sign-in' %}">Demo Sign In</a></li>
+  <li><a href="{% url 'users:sign-up' %}">Demo Sign Up</a></li>
+  <li><a href="{% url 'users:forgotten-password' %}">Demo Forgotten Password</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Django Auth API Demo - Sign In</h3>
+
+<div class="container">
+
+
+  <form id="signinform" method="POST" action="/">
+    {% csrf_token %}
+
+    <div class="row">
+
+      <h3>Sign In with Social Media or Manually</h3>
+      <div class="vl">
+        <span class="vl-innertext">or</span>
+      </div>
+
+      <div class="col">
+        <a href='{% provider_login_url "facebook" method="oauth2" %}' class="fb btn">
+          <i class="fa fa-facebook fa-fw"></i> Sign In with Facebook
+        </a>
+        <a href="{% provider_login_url 'twitter' %}" class="twitter btn">
+          <i class="fa fa-twitter fa-fw"></i> Sign In with Twitter
+        </a>
+        <a href="{% provider_login_url 'google' %}" class="google btn">
+          <i class="fa fa-google fa-fw"></i> Sign In with Google+
+        </a>
+      </div>
+
+      <div class="col">
+
+        <a href="javascript:void(0)" class="manual btn" onclick="showForm('manual-form')">
+          <i class="fa fa-user-plus fa-fw"></i> Sign In Manually
+        </a>
+        <div id="manual-form" hidden>
+
+         <label for="username">Username</label>
+          {{a_form.username}}
+
+          <label for="password">Password</label>
+          {{a_form.password}}
+
+          <label class="check-container">Show Passwords
+           <input type="checkbox" onclick="showPword()">
+           <span class="checkmark"></span>
+         </label>
+
+         <button type="submit">Sign In</button>
+       </div>
+      </div>
+
+    </div>
+  </form>
+</div>
+
+ {{a_form.errors}}
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+{% endblock %}

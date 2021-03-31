@@ -1,0 +1,59 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+
+{% block extend_head %}
+
+{% endblock %}
+
+{% block extend_nav %} 
+
+<ul class="sidenav">
+  <li><a href="{% url 'users:account' %}">Demo User Account</a></li>
+  <li><a class="active" href="{% url 'users:profile' %}">Demo Profile</a></li>
+  <li><a href="{% url 'users:sign-out' %}">Sign out</a></li>
+</ul>
+
+{% endblock %}
+
+
+{% block content %}
+
+<h3>Django Auth API Demo - User Profile for <b style="color:#9c07b6">{{request.user.first_name}} {{request.user.last_name}}</b></h3>
+
+<div class="container">
+
+  <form id="profileform" method="POST" action="/profile">
+    {% csrf_token %}
+
+   <label for="address">Address</label>
+   {{up_form.address}}
+
+   <label for="town">Town/City</label>
+   {{up_form.town}}
+
+   <label for="county">County</label>
+   {{up_form.county}}
+
+   <label for="post_code">Postal Code</label>
+   {{up_form.post_code}}
+
+   <label for="post_code">Country</label>
+   {{up_form.country}}
+
+   <label for="telephone">Telephone</label>
+   {{up_form.telephone}}
+
+   <button type="submit">Update</button>
+ </form>
+
+ {{up_form.errors}}
+
+</div>
+
+{% endblock %}
+
+{% block extend_footer %}
+
+
+{% endblock %}
