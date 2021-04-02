@@ -52,7 +52,7 @@ INSTALLED_APPS = [
 
 ]
 
-SITE_ID = 2
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -166,7 +166,7 @@ DONOT_REPLY_EMAIL_PASSWORD = 'XXX'
 
 
 
-#dict of all social auth accounts
+#dicct of all social auth accounts
 SOCIALACCOUNT_PROVIDERS = {
 
     #https://console.cloud.google.com/apis/dashboard?pli=1
@@ -195,7 +195,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'VERIFIED_EMAIL': False,
         'VERSION': 'v7.0',
     },
-    # https://developer.twitter.com/
+    # https://apps.twitter.com/app/new
     'twitter': {
         'SCOPE': ['email', 'profile'],
     }
